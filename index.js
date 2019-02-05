@@ -2,7 +2,13 @@ function newTask(title, description) {
   const task = {
     title,
     description,
-    complete: false
+    complete: false,
+    logState: function() {
+      console.log(`${this.title} has${this.complete ? ' ' : ' not '}been completed`);
+    },
+    markCompleted: function() {
+      this.complete = true;
+    }
   };
   return task;
 }
@@ -19,8 +25,6 @@ const task1 = newTask('Clean Cat Litter', 'Take all the 💩 out of the litter b
 const task2 = newTask('Do laundry', '🙃');
 const tasks = [task1, task2];
 
-logTaskState(task1);
-completeTask(task1);
-logTaskState(task1);
-
-console.log(tasks);
+task1.logState();
+task1.markCompleted();
+task1.logState();
